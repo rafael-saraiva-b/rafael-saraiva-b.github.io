@@ -47,7 +47,7 @@ function Synth()  {
         <Track>
          <Instrument 
           type="sampler"
-          samples={{D3: '/st2_kick_one_shot_low_punch_basic.wav'}}
+          samples={{D3: '../samples/kick.wav'}}
           notes={notes}
           onLoad={(buffers)=>{
             console.log(buffers)
