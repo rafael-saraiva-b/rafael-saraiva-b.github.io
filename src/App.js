@@ -1,10 +1,14 @@
+import { Route } from 'react-router-dom';
+import Primeira from './pages/Primeira'
+import Sobre from './pages/Sobre'
 import './App.css';
 
 function App() {
   return (
-   <div>
-     <h1>Rafael Saraiva Borges</h1>
-   </div>
+    <>
+      <Route path="/sobre" component={Sobre} />
+      <Route exact path="/" component={Primeira}/>
+    </>
   );
 }
 
