@@ -1,4 +1,4 @@
-export default function Circles(total, beatNum) {
+export default function Circles(total, beatNum,note) {
   let arrayBeat = [];
 
   for (let i = 0; i < beatNum; i+=1){ // gera os beats
@@ -22,5 +22,7 @@ export default function Circles(total, beatNum) {
     arrayBeat.pop();
     i+=1;
   };
-  return(arrayBeat);
+   const result = arrayBeat[0].split("").map((beat,i) =>  beat ==='1' ? {name:note, duration:false, key:i} : {duration:false,key:i})
+
+  return(result);
 };

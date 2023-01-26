@@ -3,18 +3,18 @@ import Circles from '../services/Circles'
 import { useState,useEffect } from "react";
 import { Song, Track, Instrument } from 'reactronica';
 
+import kick from '../samples/kick.wav'
+
 
 function Synth()  {
   const [totalKick,setTotalKick]= useState(10);
   const MAX = 32;
   const [beatKick,setBeatKick]=useState(4);
-  const [circles,setCircle]=useState(Circles(totalKick,beatKick))
-  const [notes,setNotes]=useState();
+  const [circles,setCircle]=useState(Circles(totalKick,beatKick,'D3'));
+  // const [notes,setNotes]=useState(null);
+  useEffect(()=>{setCircle(Circles(totalKick,beatKick,'D3'))},[totalKick,beatKick]);
 
-  useEffect(()=>{setCircle(Circles(totalKick,beatKick))},[totalKick,beatKick])
-
-  useEffect(()=>{if(totalKick<beatKick){setBeatKick(totalKick)}},[totalKick,beatKick])
-
+  useEffect(()=>{if(totalKick<beatKick){setBeatKick(totalKick)}},[totalKick,beatKick]);
     return (
       <>
       <form>
@@ -33,26 +33,17 @@ function Synth()  {
          value={beatKick}/>
          <p>{beatKick}</p>
       </form>
-      <p>{circles}</p>
 
-
-      <button
-      onMouseDown={()=> setNotes(['D3'])}
-      onMouseUp={()=>setNotes([])}
-      >
-        kick   
-      </button>
-
-      <Song>
-        <Track>
+      <Song bpm={90} isPlaying={true} >
+        <Track
+         steps={circles}
+         onStepPlay={(step) => {
+          // Callback that triggers on every step
+          console.log(step) // 'C3' ... 'G3' ... 'F3' ... 'G3'
+        }}>
          <Instrument 
           type="sampler"
-          samples={{D3: '../samples/kick.wav'}}
-          notes={notes}
-          onLoad={(buffers)=>{
-            console.log(buffers)
-            console.log('deu')
-          }}
+          samples={{D3:kick}}
         />
         </Track>
       </Song>
