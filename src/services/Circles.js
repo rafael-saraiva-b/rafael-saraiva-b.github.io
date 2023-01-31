@@ -23,6 +23,5 @@ export default function Circles(total, beatNum,note) {
     i+=1;
   };
    const result = arrayBeat[0].split("").map((beat,i) =>  beat ==='1' ? {name:note, duration:false, key:i} : {duration:false,key:i})
-
   return(result);
 };
