@@ -2,21 +2,22 @@ import React from "react";
 import Circles from '../services/Circles'
 import { useState,useEffect } from "react";
 import { Song, Track, Instrument } from 'reactronica';
+import Kick from "../components/Kick";
 
 
 function Synth()  {
-  const [totalKick,setTotalKick]= useState(10);
+  // const [totalKick,setTotalKick]= useState(10);
   const [totalHiHat,setTotalHiHat]= useState(10);
   const MAX = 32;
-  const [beatKick,setBeatKick]=useState(4);
+ // const [beatKick,setBeatKick]=useState(4);
   const [beatHiHat,setBeatHiHat]=useState(4);
-  const [circlesKick,setCircleKick]=useState(Circles(totalKick,beatKick,'D3'));
+  //const [circlesKick,setCircleKick]=useState(Circles(totalKick,beatKick,'D3'));
   const [circlesHiHat,setCircleHiHat]=useState(Circles(totalHiHat,beatHiHat,'D3'));
   const [bpm,setBpm] = useState(120);
 
-  useEffect(()=>{setCircleKick(Circles(totalKick,beatKick,'D3'))},[totalKick,beatKick]);
+ // useEffect(()=>{setCircleKick(Circles(totalKick,beatKick,'D3'))},[totalKick,beatKick]);
   useEffect(()=>{setCircleHiHat(Circles(totalHiHat,beatHiHat,'D3'))},[totalHiHat,beatHiHat]);
-  useEffect(()=>{if(totalKick<beatKick){setBeatKick(totalKick)}},[totalKick,beatKick]);
+ // useEffect(()=>{if(totalKick<beatKick){setBeatKick(totalKick)}},[totalKick,beatKick]);
   useEffect(()=>{if(totalHiHat<beatHiHat){setBeatHiHat(totalHiHat)}},[totalHiHat,beatHiHat]);
     return (
       <>
@@ -29,7 +30,7 @@ function Synth()  {
          value={bpm}/>
          <p>bpm:{bpm}</p>
          <h2>Kick</h2>
-        <input
+        {/* <input
          type="range"
          min='2'
          max={MAX}
@@ -42,7 +43,7 @@ function Synth()  {
          max={totalKick}
          onChange={(e)=>setBeatKick(parseInt(e.target.value))}
          value={beatKick}/>
-         <p>{beatKick}</p>
+         <p>{beatKick}</p> */}
          <h2>HiHat</h2>
          <input
          type="range"
@@ -60,7 +61,7 @@ function Synth()  {
          <p>{beatHiHat}</p>
       </form>
 
-      <Song bpm={bpm} isPlaying={true} >
+      {/* <Song bpm={bpm} isPlaying={true} >
         <Track
          steps={circlesKick}
          onStepPlay={(e)=>{console.log('kick',e)}}
@@ -70,7 +71,7 @@ function Synth()  {
           samples={{D3:'/samples/kick.wav'}}
         />
         </Track>
-      </Song>
+      </Song> */}
       <Song bpm={bpm} isPlaying={true}>
         <Track
          steps={circlesHiHat}
@@ -82,6 +83,7 @@ function Synth()  {
         />
         </Track>
       </Song>
+      <Kick/> 
       </>
     );
   };
