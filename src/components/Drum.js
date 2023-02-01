@@ -13,6 +13,7 @@ function Drum(props) {
   useEffect(()=>{setCircle(Circles(total,beat,'D3'))},[total,beat]);
   useEffect(()=>{if(total<beat){setBeat(total)}},[total,beat]);
   useEffect(()=>{setInPlaying(props.playing)},[props.playing]);
+  useEffect(()=>{console.log(circles)},[circles]);
 
   return(
     <>
@@ -22,8 +23,9 @@ function Drum(props) {
           type="range"
           min='2'
           max={MAX}
-          onChange={(e)=>{setTotal(parseInt(e.target.value))
+          onChange={(e)=>{
             setInPlaying(false)
+            setTotal(parseInt(e.target.value))
             setTimeout(()=>setInPlaying(props.playing),1000)}}
           value={total}/>
         <p>{total}</p>
@@ -40,7 +42,7 @@ function Drum(props) {
         <Track
          steps={circles}
          onStepPlay={(note,index)=> {setPlayedNote(index+1)
-        console.log(note)}}
+        console.log(index,note)}}
          >
          <Instrument 
           type="sampler"
