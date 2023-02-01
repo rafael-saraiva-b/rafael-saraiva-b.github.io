@@ -27,7 +27,6 @@ function Synth()  {
            {DrumsTypes.map((Drum,index)=><option key={index} value={Drum} >{Drum}</option>)}
          </select>
          <button type='button' onClick={()=>setAddedDrums([...addedDrums,selectedDrum])}>Add Drum</button>
-         <h1>{selectedDrum}</h1>
       </form>
       {addedDrums.map((drum,index)=><Drum playing={playing} bpm={bpm} name={drum} key={index}/> )}
       
