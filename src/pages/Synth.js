@@ -4,14 +4,11 @@ import Drum from "../components/Drum";
 import DrumsTypes from "../services/DrumsTypes";
 
 function Synth()  {
-  const [bpm,setBpm] = useState(120);
+  const [bpm,setBpm] = useState(150);
   const [playing,setPlaying]=useState(false);
   const [selectedDrum,setSelectedDrum]=useState(DrumsTypes[0]);
   const [addedDrums,setAddedDrums]=useState([]);
 
-  const remove = (name)=>{
-    setAddedDrums(addedDrums.filter(drum => drum !== name));
-  }
 
     return (
       <>
@@ -20,7 +17,7 @@ function Synth()  {
         <input
          type="range"
          min='60'
-         max='240'
+         max='360'
          onChange={(e)=>setBpm(parseInt(e.target.value))}
          value={bpm}/>
          <button
@@ -36,8 +33,7 @@ function Synth()  {
       playing={playing} 
       bpm={bpm} 
       name={drum} 
-      key={index}
-      delete={remove}/> )}
+      key={index}/> )}
       
       </>
     );
