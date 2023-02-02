@@ -1,0 +1,57 @@
+body {
+  background-color: #282c34;
+  color: white;
+  padding: 40px;
+  font-family: Arial;
+  text-align: center;
+}
+ul {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+/* unvisited link */
+a:link {
+  color: red;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: green;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+  text-decoration: underline;
+}
+
+/* selected link */
+a:active {
+  color: blue;
+  text-decoration: underline;
+}
+
+.generalForm {
+  margin-bottom: 4%;
+}
+
+.drums {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 32px;
+}
+
+.drum {
+  background-color: #fff;
+  border-radius: 4px;
+  max-width: 400px;
+  margin: 1%;
+  height: auto;
+  position: relative;
+  padding: 10px;
+  color: #444;
+}

@@ -2,6 +2,7 @@ import React from "react";
 import Circles from '../services/Circles'
 import { useState,useEffect } from "react";
 import { Song, Track, Instrument } from 'reactronica';
+import '../App.css'
 
 function Drum(props) {
   const [total,setTotal]= useState(10);
@@ -18,7 +19,7 @@ function Drum(props) {
 
   return(
     <>
-    <form>
+    <form className="drum">
          <h2>{props.name}</h2>
          <button
          type='button'
@@ -27,6 +28,13 @@ function Drum(props) {
            
           }}
          >{muted ? 'Unmute': 'Mute'}</button>
+          <input
+            type="range"
+            min='0'
+            max='15'
+            onChange={(e)=>setVolume(parseInt(e.target.value))}
+            value={volume}/>
+          <p>Volume:{volume}</p>
         <input
           type="range"
           min='2'
@@ -47,15 +55,8 @@ function Drum(props) {
           onChange={(e)=>setBeat(parseInt(e.target.value))}
           value={beat}/>
         <p>{beat}</p>
-        <input
-          type="range"
-          min='0'
-          max='15'
-          onChange={(e)=>setVolume(parseInt(e.target.value))}
-          value={volume}/>
-        <p>{volume}</p>
+        <p>Played Note {playedNote}</p>
     </form>
-    <p>Played Note {playedNote}</p>
       {loading && 
       <Song bpm={props.bpm} isPlaying={props.playing} >
         <Track

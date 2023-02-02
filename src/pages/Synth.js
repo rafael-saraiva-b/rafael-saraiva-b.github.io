@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Drum from "../components/Drum";
 import DrumsTypes from "../services/DrumsTypes";
+import '../App.css';
 
 function Synth()  {
   const [bpm,setBpm] = useState(150);
@@ -12,7 +13,7 @@ function Synth()  {
 
     return (
       <>
-      <form>
+      <form className="generalForm">
         <p>BPM:{bpm}</p>
         <input
          type="range"
@@ -23,17 +24,20 @@ function Synth()  {
          <button
          onClick={()=>setPlaying(!playing)}
          type='button'
-         >Playing {playing?"true":"false"}</button>
+         >{playing?"Pause":"Play"}</button>
          <select value={selectedDrum} onChange={(e)=>setSelectedDrum(e.target.value)}>
            {DrumsTypes.map((Drum,index)=><option key={index} value={Drum} >{Drum}</option>)}
          </select>
          <button type='button' onClick={()=>setAddedDrums([...addedDrums,selectedDrum])}>Add Drum</button>
       </form>
-      {addedDrums.map((drum,index)=><Drum 
-      playing={playing} 
-      bpm={bpm} 
-      name={drum} 
-      key={index}/> )}
+      <div className="drums">
+        {addedDrums.map((drum,index)=><Drum 
+          playing={playing} 
+          bpm={bpm} 
+          name={drum} 
+          key={index}
+          /> )}
+        </div>
       
       </>
     );
