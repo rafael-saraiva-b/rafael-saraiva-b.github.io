@@ -9,24 +9,36 @@ function Drum(props) {
   const MAX = 32;
   const [circles,setCircle]=useState(Circles(total,beat,'D3'));
   const [playedNote,setPlayedNote]=useState(0);
-  const [inPlaying, setInPlaying]=useState(props.playing);
+  const [loading, setLoading]=useState(true);
   useEffect(()=>{setCircle(Circles(total,beat,'D3'))},[total,beat]);
   useEffect(()=>{if(total<beat){setBeat(total)}},[total,beat]);
-  useEffect(()=>{setInPlaying(props.playing)},[props.playing]);
   useEffect(()=>{console.log(circles)},[circles]);
 
   return(
     <>
     <form>
          <h2>{props.name}</h2>
+         <button
+         type='button'
+         onClick={()=>{
+           setLoading(false);
+           props.delete(props.name);
+           setTimeout(()=>{
+              setLoading(true);
+            },500)
+          }}
+         >X</button>
         <input
           type="range"
           min='2'
           max={MAX}
           onChange={(e)=>{
-            setInPlaying(false)
-            setTotal(parseInt(e.target.value))
-            setTimeout(()=>setInPlaying(props.playing),1000)}}
+            setLoading(false);
+            setTotal(parseInt(e.target.value));
+            setTimeout(()=>{
+              setLoading(true);
+            },500)
+          }}
           value={total}/>
         <p>{total}</p>
         <input
@@ -38,18 +50,20 @@ function Drum(props) {
         <p>{beat}</p>
     </form>
     <p>Played Note {playedNote}</p>
-      <Song bpm={props.bpm} isPlaying={inPlaying} >
+      {loading && 
+      <Song bpm={props.bpm} isPlaying={props.playing} >
         <Track
          steps={circles}
          onStepPlay={(note,index)=> {setPlayedNote(index+1)
-        console.log(index,note)}}
+        console.log(props.name,index,note)
+      }}
          >
          <Instrument 
           type="sampler"
           samples={{D3:`/samples/${props.name}.wav`}}
           />
         </Track>
-      </Song>
+      </Song>}
     </>
 )
 }

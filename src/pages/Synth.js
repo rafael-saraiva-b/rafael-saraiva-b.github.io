@@ -9,6 +9,10 @@ function Synth()  {
   const [selectedDrum,setSelectedDrum]=useState(DrumsTypes[0]);
   const [addedDrums,setAddedDrums]=useState([]);
 
+  const remove = (name)=>{
+    setAddedDrums(addedDrums.filter(drum => drum !== name));
+  }
+
     return (
       <>
       <form>
@@ -28,7 +32,12 @@ function Synth()  {
          </select>
          <button type='button' onClick={()=>setAddedDrums([...addedDrums,selectedDrum])}>Add Drum</button>
       </form>
-      {addedDrums.map((drum,index)=><Drum playing={playing} bpm={bpm} name={drum} key={index}/> )}
+      {addedDrums.map((drum,index)=><Drum 
+      playing={playing} 
+      bpm={bpm} 
+      name={drum} 
+      key={index}
+      delete={remove}/> )}
       
       </>
     );
