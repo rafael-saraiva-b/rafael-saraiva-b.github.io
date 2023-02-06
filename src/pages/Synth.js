@@ -6,14 +6,26 @@ import '../App.css';
 
 function Synth()  {
   const [bpm,setBpm] = useState(150);
-  const [playing,setPlaying]=useState(false);
+  const [playing,setPlaying]=useState(true);
   const [selectedDrum,setSelectedDrum]=useState(DrumsTypes[0]);
   const [addedDrums,setAddedDrums]=useState([]);
 
 
     return (
       <>
+      <h1>Euclidean Circles Drum Machine</h1>
+      <div id='synth'>
       <form className="generalForm">
+         <select value={selectedDrum} onChange={(e)=>setSelectedDrum(e.target.value)}>
+           {DrumsTypes.map((Drum,index)=><option key={index} value={Drum} >{Drum}</option>)}
+         </select>
+         <button type='button' onClick={()=>setAddedDrums([...addedDrums,selectedDrum])}>Add</button>
+        <button
+        onClick={()=>setPlaying(!playing)}
+        type='button'
+        id='playBtn'
+        >
+        <img src={playing?"/Icons/Pause.png":'/Icons/Play.png'} alt="pause/play" id="playPause"/></button>
         <p>BPM:{bpm}</p>
         <input
          type="range"
@@ -22,13 +34,8 @@ function Synth()  {
          onChange={(e)=>setBpm(parseInt(e.target.value))}
          value={bpm}/>
          <button
-         onClick={()=>setPlaying(!playing)}
          type='button'
-         >{playing?"Pause":"Play"}</button>
-         <select value={selectedDrum} onChange={(e)=>setSelectedDrum(e.target.value)}>
-           {DrumsTypes.map((Drum,index)=><option key={index} value={Drum} >{Drum}</option>)}
-         </select>
-         <button type='button' onClick={()=>setAddedDrums([...addedDrums,selectedDrum])}>Add Drum</button>
+         >?</button>
       </form>
       <div className="drums">
         {addedDrums.map((drum,index)=><Drum 
@@ -39,7 +46,8 @@ function Synth()  {
           /> )}
         </div>
       
-      </>
+      </div>
+          </>
     );
   };
 
