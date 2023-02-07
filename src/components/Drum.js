@@ -23,7 +23,10 @@ function Drum(props) {
   return(
     <div className="drum">
         <h2>{props.name}</h2>
+        <div className="BeatContainer">
+
         <div className="circleContainer" style={{"--m":`${total}`,"--tan":`${tan}`}}>
+        <h3>{`${beat}/${total}` }</h3>
         {circles.map((beat,index) => {
           if(playedNote!==index){
             return (beat.name)?
@@ -38,23 +41,15 @@ function Drum(props) {
         })}
           </div>
       <form >
-        <button
-         type='button'
-         onClick={()=>{
-           setMuted(!muted);
-           
-          }}
-         >{muted ? 'Unmute': 'Mute'}</button>
-          <input
-            type="range"
-            min='0'
-            max='15'
-            onChange={(e)=>setVolume(parseInt(e.target.value))}
-            value={volume}/>
-          <p>Volume:{volume}</p>
         <input
           type="range"
-          min='2'
+          min='1'
+          max={total}
+          onChange={(e)=>setBeat(parseInt(e.target.value))}
+          value={beat}/>
+        <input
+          type="range"
+          min='3'
           max={MAX}
           onChange={(e)=>{
             setLoading(false);
@@ -64,16 +59,26 @@ function Drum(props) {
             },500)
           }}
           value={total}/>
-        <p>{total}</p>
-        <input
-          type="range"
-          min='1'
-          max={total}
-          onChange={(e)=>setBeat(parseInt(e.target.value))}
-          value={beat}/>
-        <p>{beat}</p>
-        <p>Played Note {playedNote}</p>
+          </form>
+        </div>
+      <div className="Volume">
+          <form >
+      <input
+        type="range"
+        min='0'
+        max='15'
+        onChange={(e)=>setVolume(parseInt(e.target.value))}
+        value={volume}/>
+      <p>Volume:{volume}</p>
+    <button
+     type='button'
+     onClick={()=>{
+       setMuted(!muted);
+      }}
+      className='mutedBtn'
+      >{muted ?  <img src="/Icons/Unmuted.png" alt="Unmuted"/>: <img src="/Icons/Muted.png" alt="Muted"/>}</button>
     </form>
+    </div>
       {loading && 
       <Song bpm={props.bpm} isPlaying={props.playing} >
         <Track

@@ -1,11 +1,13 @@
 .circleContainer {
-  --d: 2em; /* image size */
-  --rel: 1; /* how much extra space we want between images, 1 = one image size */
+  --d: 0.8em; /* image size */
+  --rel: calc(
+    50 / (var(--m) * var(--m) / 2)
+  ); /* how much extra space we want between images, 1 = one image size */
   --r: calc(0.5 * (1 + var(--rel)) * var(--d) / var(--tan)); /* circle radius */
   --s: calc(2 * var(--r) + var(--d)); /* container size */
   position: relative;
-  width: var(--s);
-  height: var(--s);
+  max-width: 230px;
+  height: 200px;
 }
 
 .circleContainer img {
@@ -17,6 +19,21 @@
   height: var(--d);
   --az: calc(var(--i) * 1turn / var(--m));
   transform: rotate(var(--az)) translate(var(--r)) rotate(calc(-1 * var(--az)));
+}
+.circleContainer h3 {
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+  --az: calc(var(--i) * 1turn / var(--m));
+  transform: rotate(var(--az)) translate(var(--r)) rotate(calc(-1 * var(--az)));
+  font-size: larger;
+  color: #2b3332;
 }
 
 img {

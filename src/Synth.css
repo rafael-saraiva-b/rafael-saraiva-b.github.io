@@ -23,46 +23,19 @@ h1 {
   font-size: 48px;
   color: #2b3332;
 }
-ul {
-  list-style-type: none; /* Remove bullets */
-  padding: 0; /* Remove padding */
-  margin: 0; /* Remove margins */
-}
 
 .generalForm button {
-  background-color: transparent;
+  background-color: #2b3332;
   border: 2px solid #ffffe6;
   border-radius: 8px;
+  color: #ffffe6;
 }
 
 #playPause {
   max-height: 15px;
+  background-color: #f15a24;
   padding: 8px 5px;
 }
-/* unvisited link */
-a:link {
-  color: red;
-  text-decoration: none;
-}
-
-/* visited link */
-a:visited {
-  color: green;
-  text-decoration: none;
-}
-
-/* mouse over link */
-a:hover {
-  color: hotpink;
-  text-decoration: underline;
-}
-
-/* selected link */
-a:active {
-  color: blue;
-  text-decoration: underline;
-}
-
 .generalForm {
   background-image: url(../public/Images/BG-Bege-Horizontal.png);
   background-repeat: no-repeat;
@@ -71,11 +44,13 @@ a:active {
   -o-background-size: cover;
   background-size: cover;
   color: #2b3332;
-  margin-bottom: 4%;
+  margin-bottom: 2%;
   max-width: 800px;
   padding: 10px;
   display: flex;
   gap: 3px;
+  justify-content: center;
+  align-items: center;
 }
 .drums {
   display: flex;
@@ -96,5 +71,50 @@ a:active {
   height: auto;
   position: relative;
   padding: 10px;
-  max-width: 250px;
+  max-width: 230px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 160px;
+  height: 6px;
+  border-radius: 5px;
+  background: #2b3332;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 30px;
+  border: 0;
+  background-image: url("../public/Icons/Slider.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.generalForm input[type="range"] {
+  width: 490px;
+}
+.BeatContainer {
+  border: 3px solid #ffffe6;
+  border-radius: 16px;
+}
+.Volume {
+  margin-top: 20px;
+  display: flex;
+  border: 3px solid #ffffe6;
+  border-radius: 16px;
+  justify-content: center;
+}
+.Volume button {
+  background-color: transparent;
+  border: transparent;
+  max-width: 80px;
 }
