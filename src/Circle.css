@@ -6,7 +6,6 @@
   position: relative;
   width: var(--s);
   height: var(--s);
-  background: silver; /* to show images perfectly fit in container */
 }
 
 .circleContainer img {

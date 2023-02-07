@@ -5,7 +5,6 @@ import { Song, Track, Instrument } from 'reactronica';
 import '../Synth.css';
 import '../Circle.css';
 
-
 function Drum(props) {
   const [total,setTotal]= useState(10);
   const [beat,setBeat]=useState(4);
@@ -16,29 +15,27 @@ function Drum(props) {
   const [muted,setMuted]=useState(false);
   const [volume,setVolume]=useState(5);
   const[tan,setTan]=useState(Math.tan(Math.PI/total));
-  const [style,setStyle]=useState(`--m: ${total}; --tan: ${+tan.toFixed(2)}`)
 
   useEffect(()=>{setCircle(Circles(total,beat,'D3'))},[total,beat]);
   useEffect(()=>{if(total<beat){setBeat(total)}},[total,beat]);
   useEffect(()=>{setTan(Math.tan(Math.PI/total))},[total]);
-  useEffect(()=>{setStyle(`--m: ${total}; --tan: ${+tan.toFixed(2)}`)},[total,tan])
 
   return(
     <div className="drum">
         <h2>{props.name}</h2>
-        <div className="circleContainer" ref={{style}}>
+        <div className="circleContainer" style={{"--m":`${total}`,"--tan":`${tan}`}}>
         {circles.map((beat,index) => {
           if(playedNote!==index){
-          return (beat.name)?
-            <img src="/Icons/Active.png" alt="Active" key={index}/>
-          :
-          <img src="/Icons/Inactive.png" alt="Inactive"key={index}/>
+            return (beat.name)?
+            <img src="/Icons/Active.png" alt="Active" key={index} style={{"--i":index}}/>
+            :
+            <img src="/Icons/Inactive.png" alt="Inactive"key={index} style={{"--i":index}}/>
           }
           return (beat.name)?
-            <img src="/Icons/ActivePlayed.png" alt="Active"key={index}/>
+          <img src="/Icons/ActivePlayed.png" alt="Active"key={index} style={{"--i":index}}/>
           :
-          <img src="/Icons/InactivePlayed.png" alt="Inactive"key={index}/>
-          })}
+          <img src="/Icons/InactivePlayed.png" alt="Inactive"key={index} style={{"--i":index}}/>
+        })}
           </div>
       <form >
         <button
