@@ -2,7 +2,9 @@ import React from "react";
 import Circles from '../services/Circles'
 import { useState,useEffect } from "react";
 import { Song, Track, Instrument } from 'reactronica';
-import '../App.css'
+import '../Synth.css';
+import '../Circle.css';
+
 
 function Drum(props) {
   const [total,setTotal]= useState(10);
@@ -13,15 +15,33 @@ function Drum(props) {
   const [loading, setLoading]=useState(true);
   const [muted,setMuted]=useState(false);
   const [volume,setVolume]=useState(5);
+  const[tan,setTan]=useState(Math.tan(Math.PI/total));
+  const [style,setStyle]=useState(`--m: ${total}; --tan: ${+tan.toFixed(2)}`)
+
   useEffect(()=>{setCircle(Circles(total,beat,'D3'))},[total,beat]);
   useEffect(()=>{if(total<beat){setBeat(total)}},[total,beat]);
-  useEffect(()=>{console.log(circles)},[circles]);
+  useEffect(()=>{setTan(Math.tan(Math.PI/total))},[total]);
+  useEffect(()=>{setStyle(`--m: ${total}; --tan: ${+tan.toFixed(2)}`)},[total,tan])
 
   return(
-    <>
-    <form className="drum">
-         <h2>{props.name}</h2>
-         <button
+    <div className="drum">
+        <h2>{props.name}</h2>
+        <div className="circleContainer" ref={{style}}>
+        {circles.map((beat,index) => {
+          if(playedNote!==index){
+          return (beat.name)?
+            <img src="/Icons/Active.png" alt="Active" key={index}/>
+          :
+          <img src="/Icons/Inactive.png" alt="Inactive"key={index}/>
+          }
+          return (beat.name)?
+            <img src="/Icons/ActivePlayed.png" alt="Active"key={index}/>
+          :
+          <img src="/Icons/InactivePlayed.png" alt="Inactive"key={index}/>
+          })}
+          </div>
+      <form >
+        <button
          type='button'
          onClick={()=>{
            setMuted(!muted);
@@ -61,8 +81,8 @@ function Drum(props) {
       <Song bpm={props.bpm} isPlaying={props.playing} >
         <Track
          steps={circles}
-         onStepPlay={(note,index)=> {setPlayedNote(index+1)
-        console.log(props.name,index,note)
+         onStepPlay={(note,index)=> {setPlayedNote(index)
+        // console.log(props.name,index,note)
       }}
         mute={muted}
         volume={volume-7}
@@ -73,7 +93,7 @@ function Drum(props) {
           />
         </Track>
       </Song>}
-    </>
+    </div>
 )
 }
 

@@ -1,0 +1,25 @@
+.circleContainer {
+  --d: 2em; /* image size */
+  --rel: 1; /* how much extra space we want between images, 1 = one image size */
+  --r: calc(0.5 * (1 + var(--rel)) * var(--d) / var(--tan)); /* circle radius */
+  --s: calc(2 * var(--r) + var(--d)); /* container size */
+  position: relative;
+  width: var(--s);
+  height: var(--s);
+  background: silver; /* to show images perfectly fit in container */
+}
+
+.circleContainer img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: calc(-0.5 * var(--d));
+  width: var(--d);
+  height: var(--d);
+  --az: calc(var(--i) * 1turn / var(--m));
+  transform: rotate(var(--az)) translate(var(--r)) rotate(calc(-1 * var(--az)));
+}
+
+img {
+  max-width: 100%;
+}

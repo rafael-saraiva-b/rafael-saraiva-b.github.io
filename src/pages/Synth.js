@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Drum from "../components/Drum";
 import DrumsTypes from "../services/DrumsTypes";
-import '../App.css';
+import '../Synth.css';
 
 function Synth()  {
   const [bpm,setBpm] = useState(150);
