@@ -17,24 +17,50 @@ div #synth {
   flex-direction: column;
 }
 h1 {
-  margin-top: 150px;
+  margin-top: 110px;
   font-family: Shrikahand;
   font-style: italic;
   font-size: 48px;
   color: #2b3332;
 }
+h2 {
+  margin: 6px;
+}
 
 .generalForm button {
   background-color: #2b3332;
-  border: 2px solid #ffffe6;
+  border: 3px solid #ffffe6;
   border-radius: 8px;
   color: #ffffe6;
+  font-size: medium;
 }
-
+#bpmDiv {
+  display: flex;
+  border: 3px solid #ffffe6;
+  border-radius: 8px;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 4px;
+}
+#bpmDiv p {
+  margin: 8px 5px;
+  min-width: 56px;
+}
+#addBtn {
+  padding: 10px 7px;
+}
+#helpBtn {
+  padding: 10px 14px;
+}
+#playBtnInactive {
+  background-color: #894426;
+}
+#playBtnActive {
+  background-color: #f15a24;
+}
 #playPause {
   max-height: 15px;
-  background-color: #f15a24;
-  padding: 8px 5px;
+  padding: 8px 7px;
 }
 .generalForm {
   background-image: url(../public/Images/BG-Bege-Horizontal.png);
@@ -45,10 +71,10 @@ h1 {
   background-size: cover;
   color: #2b3332;
   margin-bottom: 2%;
-  max-width: 800px;
+  width: 1053px;
   padding: 10px;
   display: flex;
-  gap: 3px;
+  gap: 8px;
   justify-content: center;
   align-items: center;
 }
@@ -81,7 +107,6 @@ input[type="range"] {
   border-radius: 5px;
   background: #2b3332;
   outline: none;
-  opacity: 0.7;
   -webkit-transition: 0.2s;
   transition: opacity 0.2s;
 }
@@ -89,8 +114,8 @@ input[type="range"] {
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 40px;
-  height: 30px;
+  width: 50px;
+  height: 40px;
   border: 0;
   background-image: url("../public/Icons/Slider.png");
   background-size: contain;
@@ -100,21 +125,56 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .generalForm input[type="range"] {
-  width: 490px;
+  width: 640px;
+  margin-right: 10px;
 }
 .BeatContainer {
   border: 3px solid #ffffe6;
   border-radius: 16px;
 }
+.BeatContainer input[type="range"] {
+  margin-bottom: 20px;
+}
+
 .Volume {
   margin-top: 20px;
   display: flex;
   border: 3px solid #ffffe6;
   border-radius: 16px;
   justify-content: center;
+  color: #2b3332;
+  font-size: larger;
 }
 .Volume button {
   background-color: transparent;
   border: transparent;
-  max-width: 80px;
+  max-width: 60px;
+  margin-top: 15px;
+  display: inline-block;
+  margin-left: 20px;
+}
+.Volume input[type="range"] {
+  margin-top: 20px;
+}
+.Volume p {
+  width: fit-content;
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+select {
+  appearance: none;
+  border: 3px solid #ffffe6;
+  padding: 10px 20px;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #ffffe6;
+}
+
+select option {
+  margin: 40px;
+  background: #2b3332;
+  color: #ffffe6;
 }
