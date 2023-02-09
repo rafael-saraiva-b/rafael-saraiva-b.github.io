@@ -7,8 +7,9 @@
 
 .circleContainer {
   --d: 0.8em; /* image size */
+  --t: calc(var(--m) * var(--m) / 2);
   --rel: calc(
-    50 / (var(--m) * var(--m) / 2)
+    50 / var(--t)
   ); /* how much extra space we want between images, 1 = one image size */
   --r: calc(0.5 * (1 + var(--rel)) * var(--d) / var(--tan)); /* circle radius */
   --s: calc(2 * var(--r) + var(--d)); /* container size */
