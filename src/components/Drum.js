@@ -13,7 +13,7 @@ function Drum(props) {
   const [playedNote,setPlayedNote]=useState(0);
   const [loading, setLoading]=useState(true);
   const [muted,setMuted]=useState(false);
-  const [volume,setVolume]=useState(5);
+  const [volume,setVolume]=useState(25);
   const[tan,setTan]=useState(Math.tan(Math.PI/total));
 
   useEffect(()=>{setCircle(Circles(total,beat,'D3'))},[total,beat]);
@@ -66,8 +66,11 @@ function Drum(props) {
       <input
         type="range"
         min='0'
-        max='15'
-        onChange={(e)=>setVolume(parseInt(e.target.value))}
+        max='100'
+        onChange={(e)=>{
+          setVolume(parseInt(e.target.value))
+          setMuted(false)
+        }}
         value={volume}/>
       <p>Volume:{volume}</p>
     <button
@@ -83,11 +86,11 @@ function Drum(props) {
       <Song bpm={props.bpm} isPlaying={props.playing} >
         <Track
          steps={circles}
-         onStepPlay={(note,index)=> {setPlayedNote(index)
+         onStepPlay={(_note,index)=> {setPlayedNote(index)
         // console.log(props.name,index,note)
       }}
         mute={muted}
-        volume={volume-7}
+        volume={(volume/3)-25}
          >
          <Instrument 
           type="sampler"
