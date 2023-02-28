@@ -14,15 +14,22 @@ function Drum(props) {
   const [loading, setLoading]=useState(true);
   const [muted,setMuted]=useState(false);
   const [volume,setVolume]=useState(25);
-  const[tan,setTan]=useState(Math.tan(Math.PI/total));
+  const [tan,setTan]=useState(Math.tan(Math.PI/total));
+  const [removed,setRemoved]=useState(false)
 
   useEffect(()=>{setCircle(Circles(total,beat,'D3'))},[total,beat]);
   useEffect(()=>{if(total<beat){setBeat(total)}},[total,beat]);
   useEffect(()=>{setTan(Math.tan(Math.PI/total))},[total]);
-
+  if(removed) return null;
   return(
     <div className="drum">
         <h2>{props.name}</h2>
+        <button
+        className="removeBtn"
+        type='button'
+        onClick= {()=>{
+          setRemoved(true);
+        }}>X</button>
         <div className="BeatContainer">
 
         <div className="circleContainer" style={{"--m":`${total}`,"--tan":`${tan}`}}>
@@ -60,7 +67,8 @@ function Drum(props) {
           }}
           value={total}/>
           </form>
-        </div>
+        </div> 
+        
       <div className="Volume">
           <form >
       <input

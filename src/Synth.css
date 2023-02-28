@@ -45,6 +45,15 @@ h2 {
   color: #ffffe6;
   font-size: medium;
 }
+
+.removeBtn {
+  background-color: #2b3332;
+  border: 3px solid #ffffe6;
+  border-radius: 8px;
+  color: #ffffe6;
+  font-size: medium;
+}
+
 #bpmDiv {
   display: -webkit-box;
   display: -ms-flexbox;
