@@ -1,5 +1,4 @@
 import { Route } from 'react-router-dom';
-import Primeira from './pages/Primeira'
 import Sobre from './pages/Sobre'
 import Contato from './pages/Contato'
 import Synth from './pages/Synth'
@@ -10,8 +9,7 @@ function App() {
     <>
       <Route path="/sobre" component={Sobre} />
       <Route path="/contato" component={Contato}/>
-      <Route path="/synth" component={Synth}/>
-      <Route exact path="/" component={Primeira}/>
+      <Route exact path="/" component={Synth}/>
     </>
   );
 }
