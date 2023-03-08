@@ -94,7 +94,7 @@ h2 {
   background-size: cover;
   color: #2b3332;
   margin-bottom: 2%;
-  width: 1053px;
+  width: 1154px;
   padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -125,12 +125,13 @@ h2 {
   background-image: url(../public/Images/BG-Bege-Vertical.png);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   color: #ffffe6;
   margin: 1%;
   height: auto;
   position: relative;
   padding: 10px;
-  max-width: 230px;
+  width: 257px;
 }
 
 input[type="range"] {
@@ -160,19 +161,21 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .generalForm input[type="range"] {
-  width: 640px;
+  width: 723px;
   margin-right: 10px;
 }
 .BeatContainer {
+  margin: 0 auto;
   border: 3px solid #ffffe6;
   border-radius: 16px;
+  max-width: 204px;
 }
 .BeatContainer input[type="range"] {
   margin-bottom: 20px;
 }
 
 .Volume {
-  margin-top: 20px;
+  margin: 20px auto 0px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -183,14 +186,16 @@ input[type="range"]::-webkit-slider-thumb {
   justify-content: center;
   color: #2b3332;
   font-size: larger;
+  font-weight: bold;
+  max-width: 204px;
 }
 .Volume button {
   background-color: transparent;
   border: transparent;
-  max-width: 60px;
+  max-width: 55px;
   margin-top: 15px;
   display: inline-block;
-  margin-left: 20px;
+  margin-left: 6px;
 }
 .Volume input[type="range"] {
   margin-top: 20px;

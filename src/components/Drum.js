@@ -24,12 +24,6 @@ function Drum(props) {
   return(
     <div className="drum">
         <h2>{props.name}</h2>
-        <button
-        className="removeBtn"
-        type='button'
-        onClick= {()=>{
-          setRemoved(true);
-        }}>X</button>
         <div className="BeatContainer">
 
         <div className="circleContainer" style={{"--m":`${total}`,"--tan":`${tan}`}}>
@@ -88,6 +82,12 @@ function Drum(props) {
       }}
       className='mutedBtn'
       >{muted ?  <img src="/Icons/Unmuted.png" alt="Unmuted"/>: <img src="/Icons/Muted.png" alt="Muted"/>}</button>
+      <button
+        className="removeBtn"
+        type='button'
+        onClick= {()=>{
+          setRemoved(true);
+        }}><img src="/Icons/Trash.png" alt="Remove"/></button>
     </form>
     </div>
       {loading && 
