@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Drum from "../components/Drum";
 import DrumsTypes from "../services/DrumsTypes";
 import '../Synth.css';
@@ -34,11 +35,12 @@ function Synth()  {
          max='360'
          onChange={(e)=>setBpm(parseInt(e.target.value))}
          value={bpm}/>
-         </div>
+         </div><Link to='/sobre'>
          <button
          type='button'
          id="helpBtn"
          >?</button>
+         </Link>
       </form>
       <div className="drums">
         {addedDrums.map((drum,index)=><Drum 
